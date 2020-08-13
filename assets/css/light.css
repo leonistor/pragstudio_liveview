@@ -1,0 +1,45 @@
+#light {
+  width: 100%;
+  padding: 0.5em;
+  text-align: center;
+}
+
+#meter-container {
+  height: 2em;
+  width: 60%;
+  margin: 1em auto;
+
+  line-height: 2em;
+
+  border-radius: 1em;
+  background-color: lightslategray;
+}
+
+#meter-value {
+  height: 2em;
+  border-radius: 1em;
+  text-align: center;
+  font-weight: bold;
+
+  vertical-align: middle;
+
+  background-color: orange;
+  transition: width 1s ease;
+}
+
+#bulb {
+  stroke: #555;
+  stroke-width: 2px;
+  height: 14em;
+  display: block;
+  margin: 0 auto;
+}
+
+.bulb-colors {
+  --bulb-color: hsl(51, 100%, 50%);
+  --socket-color: #06c;
+}
+
+svg * {
+  transition: all 1s ease;
+}
