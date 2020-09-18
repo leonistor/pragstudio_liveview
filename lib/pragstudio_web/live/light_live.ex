@@ -2,10 +2,13 @@ defmodule PragstudioWeb.LightLive do
   use PragstudioWeb, :live_view
 
   def mount(_params, _session, socket) do
+    IO.puts("MOUNT #{inspect(self())}")
     {:ok, assign(socket, :brightness, 10)}
   end
 
   def render(assigns) do
+    IO.puts("RENDER #{inspect(self())}")
+
     ~L"""
     <h1>Front Porch Light</h1>
 
@@ -56,6 +59,7 @@ defmodule PragstudioWeb.LightLive do
   end
 
   def handle_event("on", _params, socket) do
+    IO.puts("ON #{inspect(self())}")
     {:noreply, assign(socket, :brightness, 100)}
   end
 
