@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+}
+
+#license {
+  max-width: 50vw;
+  margin: 0 auto 0 auto;
+}
+
+.card {
+  background-color: #eeeeee;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.seats {
+  display: inline-flex;
+  align-items: center;
+}
+
+.seats > img {
+  width: 2.5rem;
+  margin-right: 1rem;
+}
+
+.content > form {
+  margin-bottom: 0;
+}
+
+.amount {
+  font-weight: lighter;
+  font-size: 250%;
+  color: #3182ce;
+}

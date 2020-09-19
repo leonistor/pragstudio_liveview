@@ -20,6 +20,7 @@ defmodule PragstudioWeb.Router do
     live "/", PageLive, :index
 
     live "/live", LightLive
+    live "/license", LicenseLive
   end
 
   # Other scopes may use custom stacks.
