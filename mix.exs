@@ -48,6 +48,7 @@ defmodule Pragstudio.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:number, "~> 1.0"},
+      {:timex, "~> 3.6"},
       {:octicons, "~> 0.8.0"}
     ]
   end
