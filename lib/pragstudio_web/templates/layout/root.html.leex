@@ -9,6 +9,9 @@
     <%= live_title_tag assigns[:page_title] || "Pragstudio", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+
+    <%# https://grayshift.io/docs/getting-started/introduction/ %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gskit/gskit@2.2.2/dist/css/grayshift.min.css" integrity="sha384-RqrQfVp74y1Oik0uEX6+6D63yq1VaEJ1KEx4lCpelETjeoZ8qjeI/+x5gG5Qytbx" crossorigin="anonymous">
   </head>
 
   <body>

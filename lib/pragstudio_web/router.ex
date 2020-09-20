@@ -21,6 +21,7 @@ defmodule PragstudioWeb.Router do
 
     live "/live", LightLive
     live "/license", LicenseLive
+    live "/sales-dashboard", SalesDashboardLive
   end
 
   # Other scopes may use custom stacks.
