@@ -1,0 +1,6 @@
+.card-group {
+  border-radius: 0.5rem;
+}
+.card-group .card {
+  border-radius: 0;
+}
