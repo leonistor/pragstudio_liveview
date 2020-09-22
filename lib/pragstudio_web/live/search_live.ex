@@ -7,7 +7,8 @@ defmodule PragstudioWeb.SearchLive do
     socket =
       assign(socket,
         zip: "",
-        stores: []
+        stores: [],
+        loading: false
       )
 
     {:ok, socket}
@@ -21,11 +22,18 @@ defmodule PragstudioWeb.SearchLive do
       phx-submit="zip-search">
       <input type="text" name="zip" value="<%= @zip %>" placeholder="Zip Code"
         autofocus autocomplete="off"
+        <%= if @loading, do: "readonly" %>
         class="form-control form-control-lg" />
       <button class="btn btn-primary mt-3">
         <%= raw(Octicons.to_svg(:search)) %>
       </button>
     </form>
+
+    <%= if @loading do %>
+    <div class="loading mx-auto" style="max-width: 400px;">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+    <% end %>
 
     <div id="search" class="py-6 mx-auto" style="max-width: 700px;">
       <div class="card-group">
@@ -61,12 +69,33 @@ defmodule PragstudioWeb.SearchLive do
   end
 
   def handle_event("zip-search", %{"zip" => zip}, socket) do
+    send(self(), {:run_zip_search, zip})
+
     socket =
       assign(socket,
         zip: zip,
-        stores: Stores.search_by_zip(zip)
+        # sequential assign!, use message run_zip_search to self
+        # stores: Stores.search_by_zip(zip),
+        stores: [],
+        loading: true
       )
 
     {:noreply, socket}
+  end
+
+  def handle_info({:run_zip_search, zip}, socket) do
+    case Stores.search_by_zip(zip) do
+      [] ->
+        socket =
+          socket
+          |> put_flash(:info, "No stores matching '#{zip}'")
+          |> assign(stores: [], loading: false)
+
+        {:noreply, socket}
+
+      stores ->
+        socket = assign(socket, stores: stores, loading: false)
+        {:noreply, socket}
+    end
   end
 end
